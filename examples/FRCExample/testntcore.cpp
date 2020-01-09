@@ -37,5 +37,13 @@ int main()
     nt::SetEntryValue(bar2, nt::Value::MakeBoolean(true));
     std::this_thread::sleep_for(std::chrono::seconds(10));
 
+    int icnt = 0;
+    auto counter = nt::GetEntry(inst, "/SmartDashboard/Vision/counter");
+    while(true)
+    {
+        std::this_thread::sleep_for(std::chrono::seconds(2));
+        nt::SetEntryValue(counter, nt::Value::MakeDouble(icnt++));
+    }
+
     return 0;
 }
